@@ -13,7 +13,7 @@ async function bootstrap() {
         return;
       }
       // Allow any localhost port in development
-      if (/^https?:\/\/localhost(:\d+)?$/.test(origin)) {
+      if (/^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)) {
         callback(null, true);
         return;
       }
