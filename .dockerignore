@@ -1,0 +1,12 @@
+node_modules
+dist
+uploads
+data
+.git
+.github
+*.md
+.env
+.env.*
+!.env.example
+setup-python-whisper.ps1
+start.ps1
