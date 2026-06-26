@@ -26,9 +26,7 @@ ENV WHISPER_MODEL=Xenova/whisper-base
 
 RUN apt-get update \
   && apt-get install -y --no-install-recommends ca-certificates \
-  && rm -rf /var/lib/apt/lists/* \
-  && groupadd --gid 1000 voicebridge \
-  && useradd --uid 1000 --gid voicebridge --create-home voicebridge
+  && rm -rf /var/lib/apt/lists/*
 
 COPY package.json yarn.lock ./
 RUN yarn install --frozen-lockfile --production \
@@ -39,9 +37,9 @@ COPY --from=builder /app/node_modules/@xenova/transformers/.cache \
   ./node_modules/@xenova/transformers/.cache
 
 RUN mkdir -p data uploads \
-  && chown -R voicebridge:voicebridge /app
+  && chown -R node:node /app
 
-USER voicebridge
+USER node
 
 EXPOSE 3001
 
